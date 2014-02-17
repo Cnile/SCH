@@ -1,0 +1,126 @@
+Gear_Cursna = {}
+Gear_Cursna['neck'] = "Malison medallion"
+Gear_Cursna['ring1'] = "Ephedra Ring"
+
+Gear_ProShell = {}
+Gear_ProShell['ear1'] = "Brachyura earring"
+
+Gear_Aquaveil = {}
+Gear_Aquaveil['waist'] = "Emphatikos rope"
+
+Gear_Enfeebling = {}
+Gear_Enfeebling['Main'] = 'Chatoyan staff'
+Gear_Enfeebling['Sub'] = 'Wizzan grip'
+Gear_Enfeebling['head'] = ''
+Gear_Enfeebling['back'] = 'Swith Cape' 
+
+Gear_Cure = {}
+Gear_Cure['main'] = "Tamaxchi"
+Gear_Cure['Sub'] = "Genbu's Shield"
+Gear_Cure['ammo'] = "Incantor stone"
+Gear_Cure['head'] = "Gendewitha caubeen"
+Gear_Cure['body'] = "Heka's Kalasiris"
+Gear_Cure['hands'] = "Bokwus gloves"
+Gear_Cure['legs'] = "Spolia trews"
+Gear_Cure['feet'] = "Hagondes sabots"
+Gear_Cure['neck'] = "Savant's Chain"
+Gear_Cure['waist'] = "Witful belt"
+Gear_Cure['ear1'] = "Loquacious earring"
+Gear_Cure['ear2'] = "Graiai Earring"
+Gear_Cure['ring1'] = "Sirona's Ring"
+Gear_Cure['ring2'] = "Prolix Ring"
+Gear_Cure['back'] = "Pahtli Cape"
+
+Gear_Enhancing = {}
+Gear_Enhancing['main'] = "Kirin's pole"
+Gear_Enhancing['Sub'] = 'Wizzan grip' 
+Gear_Enhancing['head'] = "Svnt. Bonnet +2"
+Gear_Enhancing['body'] = "Argute gown +2"
+Gear_Enhancing['hands'] = "Bokwus Gloves"
+Gear_Enhancing['legs'] = "Spolia Trews"
+Gear_Enhancing['feet'] = "Orvail Souliers"
+Gear_Enhancing['neck'] = "Enhancing torque"
+Gear_Enhancing['waist'] = "Siegel Sash"
+Gear_Enhancing['back'] = "Merciful Cape"
+
+
+Gear_PDT = {}
+Gear_PDT['Main'] = "tetra staff"
+Gear_PDT['Sub'] = "Mythril Grip +1"
+Gear_PDT['Ammo'] = "Brigantia pebble"
+Gear_PDT['head'] = "Svnt. Bonnet +2"
+Gear_PDT['body'] = "Heka's Kalasiris"
+Gear_PDT['hands'] = "Savant's bracers +2"
+Gear_PDT['Legs'] = "Paean tights"
+Gear_PDT['Feet'] = "Frisky sabots"
+Gear_PDT['neck'] = "Twilight torque"
+Gear_PDT['Waist'] = "Slipor sash"
+Gear_PDT['Ear1'] = "Soil Pearl"
+Gear_PDT['Ear2'] = "Soil Pearl"
+Gear_PDT['Ring1'] = "Dark ring"
+Gear_PDT['Ring2'] = "Dark Ring"
+Gear_PDT['Back'] = "Umbra Cape"
+
+Gear_PDT_Light = {}
+Gear_PDT_Light['head'] = "Svnt. Bonnet +2"
+Gear_PDT_Light['body'] = "Heka's Kalasiris"
+Gear_PDT_Light['hands'] = "Savant's bracers +2"
+Gear_PDT_Light['Legs'] = "Paean tights"
+Gear_PDT_Light['Feet'] = "Frisky sabots"
+Gear_PDT_Light['neck'] = "Twilight torque"
+Gear_PDT_Light['Waist'] = "Slipor sash"
+Gear_PDT_Light['Ear1'] = "Soil Pearl"
+Gear_PDT_Light['Ear2'] = "Soil Pearl"
+Gear_PDT_Light['Ring1'] = "Dark ring"
+Gear_PDT_Light['Ring2'] = "Dark Ring"
+Gear_PDT_Light['Back'] = "Umbra Cape"
+
+Gear_Nuke = {}
+Gear_Nuke['main'] = "Atinian Staff"
+Gear_Nuke['Sub'] = "Wizzan grip"
+Gear_Nuke['ammo'] = "Impatiens"
+Gear_Nuke['head'] = "Hagondes hat"
+Gear_Nuke['body'] = "Hagondes coat"
+Gear_Nuke['hands'] = "Bokwus Gloves"
+Gear_Nuke['legs'] = "Hagondes pants"
+Gear_Nuke['feet'] = "Hagondes sabots"
+Gear_Nuke['neck'] = "Savant's Chain"
+Gear_Nuke['waist'] = "Witful Belt"
+Gear_Nuke['ear1'] = "Loquacios earring"
+Gear_Nuke['ear2'] = "Hecate's Earring"
+Gear_Nuke['ring1'] = "Icesoul Ring"
+Gear_Nuke['ring2'] = "Prolix Ring"
+Gear_Nuke['back'] = "Searing cape"
+
+Gear_Enfeebling_Int = {}
+Gear_Enfeebling_Int['main'] = "Chatoyant Staff"
+Gear_Enfeebling_Int['Sub'] = "Mephitis grip"
+Gear_Enfeebling_Int['ammo'] = "Savant's treatise"
+Gear_Enfeebling_Int['head'] = "Hyksos Khat"
+Gear_Enfeebling_Int['body'] = "Scholar's Gown"
+Gear_Enfeebling_Int['hands'] = "Argute Bracers +2"
+Gear_Enfeebling_Int['legs'] = "Savant's Pants +2"
+Gear_Enfeebling_Int['feet'] = "Nares clogs"
+Gear_Enfeebling_Int['neck'] = "Weike Torque"
+Gear_Enfeebling_Int['waist'] = "Cognition Belt"
+Gear_Enfeebling_Int['ear1'] = "Strophadic Earring"
+Gear_Enfeebling_Int['ring1'] = "Strendu Ring"
+Gear_Enfeebling_Int['ring2'] = "Icesoul Ring"
+Gear_Enfeebling_Int['back'] = "Refraction cape"
+
+Gear_Stun = {}
+Gear_Stun['main'] = "Atinian staff"
+Gear_Stun['Sub'] = "Vivid strap"
+Gear_Stun['ammo'] = "Incantor stone"
+Gear_Stun['head'] = "Kaabanax hat"
+Gear_Stun['body'] = "Bokwus robe"
+Gear_Stun['hands'] = "Gendewitha Gages"
+Gear_Stun['legs'] = "Orvail pants"
+Gear_Stun['feet'] = "Chelona boots"
+Gear_Stun['neck'] = "Savant's chain"
+Gear_Stun['waist'] = "Witful belt"
+Gear_Stun['ear1'] = "Lifestorm earring"
+Gear_Stun['ear2'] = "Psystorm earring"
+Gear_Stun['ring1'] = "Mediator's ring"
+Gear_Stun['ring2'] = "Prolix rong"
+Gear_Stun['back'] = "Swith cape"
