@@ -1,0 +1,239 @@
+require "gear_sets"
+
+Gear_Active = {}
+
+function event_load()
+	write("Scholar Macros Loaded!")
+	send_command("alias schcast lua c scholar casting")
+	Gear_Active = Gear_Nuke
+end
+
+
+SetActive = false
+function event_action(act)
+	cPlayer = get_player()
+	if cPlayer['main_job'] ~= "SCH" then
+		return
+	end
+	iPlayerID = cPlayer['id']
+	sPlayerName = get_player()['name']
+	sActorName = get_mob_by_id(act['actor_id'])['name']
+	sTargetName = get_mob_by_id(act['targets'][1]['id'])['name']
+	if act['category'] == 7 then
+		for k,v in pairs( act['targets'] ) do
+			--add_to_chat(0,get_mob_by_id(act['targets'][k]['id'])['name'].." action count: "..act['targets'][k]['action_count'].." Param: "..act['targets'][k]['actions'][1]['param'])
+			if act['targets'][k]['id'] ==  iPlayerID then
+				Equip( Gear_PDT_Light )
+			end
+		end
+	elseif act['category'] == 8 then
+		for k,v in pairs( act['targets'] ) do
+			if act['targets'][k]['id'] ==  iPlayerID then
+				--add_to_chat(0,act['targets'][k]['actions'][k]['param'])
+				if act['targets'][k]['actions'][k]['param'] == 20 then
+					Equip( Gear_Cursna )
+					SetActive = true
+				elseif act['targets'][k]['actions'][k]['param'] == 47 or act['targets'][k]['actions'][k]['param'] == 52 then
+					Equip( Gear_ProShell )
+					SetActive = true
+				elseif act['targets'][k]['actions'][k]['param'] == 55 then
+					Equip( Gear_Aquaveil )
+					SetActive = true
+				end
+			end
+		end
+	elseif act['category'] == 11 and act['targets'][1]['id'] ==  get_player()['id'] then
+		EquipActive()
+	elseif act['category'] == 4 and sActorName == sPlayerName then
+		if SetActive then
+			EquipActive()
+			SetActive = false
+		end
+	end
+	--add_to_chat(0, "param: "..act['param'].." Unknown: "..act['unknown'].." catagory: "..act['category'].." Target: "..sTargetName.." Message: "..act['targets'][1]['actions'][1]['message'].." TargetID: "..act['targets'][1]['id'].." Action Param: "..act['targets'][1]['actions'][1]['param'] )
+end
+function EquipActive()
+	for k,v in pairs(Gear_Active) do
+		send_command("input /equip "..k.." \""..v.."\"")
+	end
+end
+function Equip(Gear_Set)
+	for k,v in pairs(Gear_Set) do
+		send_command("input /equip "..k.." \""..v.."\"")
+	end
+end
+
+function event_addon_command(...)
+    local term = table.concat({...}, ' ')
+    local splitarr = split(term,' ')
+	if splitarr[1] == 'test' then
+		send_command( "input /l "..COLOR(red)..term )
+	end
+	if splitarr[1] == 'set' then
+		SetActive = false
+		if splitarr[2] == 'def' then
+			Gear_Active = Gear_PDT
+			EquipActive()
+		elseif splitarr[2] == 'cure' then
+			Gear_Active =  Gear_Cure
+			EquipActive()
+		elseif splitarr[2] == 'enhancing' then
+			Gear_Active =  Gear_Enhancing
+			EquipActive()
+		elseif splitarr[2] == 'nuke' then
+			Gear_Active =  Gear_Nuke
+			EquipActive()
+		elseif splitarr[2] == 'enfeebling' then
+			Gear_Active =  Gear_Enfeebling_Int
+			EquipActive()
+           elseif splitarr[2] == 'stun' then
+			Gear_Active =  Gear_Stun
+			EquipActive()
+		end
+	elseif splitarr[1] == 'casting' then
+		SetActive = true
+	elseif splitarr[1] == 'cast' then
+		SetActive = true
+		if splitarr[2] == 'sleep' then
+			Sleep_Set = Gear_Enfeebling_Int
+			Sleep_Set['waist'] = "Anrin obi"
+			Equip( Sleep_Set )
+			send_command("input /ma \"Sleep\" <t>")
+		elseif splitarr[2] == 'sleep2' then
+			Sleep_Set = Gear_Enfeebling_Int
+			Sleep_Set['waist'] = "Anrin obi"
+			Equip( Sleep_Set )
+			send_command("input /ma \"Sleep II\" <t>")
+			
+		elseif splitarr[2] == 'gravity' then
+			Equip( Gear_Enfeebling_Int )
+			send_command("input /ma \"gravity\" <t>")
+		elseif splitarr[2] == 'break' then
+			Equip( Gear_Enfeebling_Int )
+			send_command("input /ma \"break\" <t>")
+		elseif splitarr[2] == 'bind' then
+			Equip( Gear_Enfeebling_Int )
+			send_command("input /ma \"bind\" <t>")
+		elseif splitarr[2] == 'phalanx' then
+			Equip( Gear_Enhancing )
+			send_command("input /ma \"phalanx\" <me>")
+		elseif splitarr[2] == 'stoneskin' then
+			Enhance = Gear_Enhancing
+			Enhance['waist'] = "Siegel sash"
+			Equip( Enhance )
+			send_command("input /ma \"stoneskin\" <me>")
+		end
+	end
+end
+
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
+end
+
+function event_outgoing_text(original, modified)
+    for char in original:gmatch('<([%a%d]+)>') do
+		if char == 'lowhp' then
+			mob_hpp = 101
+			target = ''
+			local aMobs = get_mob_array()
+			for mobid,mob in pairs(aMobs) do
+				if not mob['is_npc'] then
+					if mob['hpp'] < mob_hpp and mob['hpp'] >= 1 then
+						if mob['distance'] < 400 and mob['distance'] > 0 and mob['render'] ~= 64 then
+							target = mob['name']
+							mob_hpp = mob['hpp']
+						end
+					end
+				end
+			end
+			modified = original:gsub('<'..char..'>', target)
+        end
+    end
+	--add_to_chat(0, original )
+    return modified
+end
+timeinfo = true
+
+earring_on = false
+init = true
+function event_time_change(old, new)
+	sublimation = false
+	cPlayer = get_player()
+	if cPlayer['main_job'] ~= "SCH" then
+		return
+	end
+	if new > 18.00 or new < 6.00 then
+		if timeinfo then
+			timeinfo = false
+			add_to_chat(204,"======================Night Has Approached!======================")
+		end
+	else
+		if not timeinfo then
+			timeinfo = true
+			add_to_chat(204,"======================Night is Over!======================")
+		end
+	end
+
+	for _,buff in pairs(cPlayer['buffs']) do
+		if buff == 187 then
+			sublimation = true
+			if not earring_on then
+				init = false
+				earring_on = true;
+				send_command("input /equip ear1 \"Savant's Earring\"")
+				add_to_chat(0,"on")
+			end
+		end
+	end
+	if not sublimation or init then
+		if earring_on or init then
+			init = false
+			send_command("input /equip ear1 \"Loquac. Earring\"")
+			earring_on = false
+			add_to_chat(0,"off")
+		end
+	end
+end
+function split(msg, match)
+	local length = msg:len()
+	local splitarr = {}
+	local u = 1
+	while u <= length do
+		local nextanch = msg:find(match,u)
+		if nextanch ~= nil then
+			splitarr[#splitarr+1] = msg:sub(u,nextanch-match:len())
+			if nextanch~=length then
+				u = nextanch+match:len()
+			else
+				u = length
+			end
+		else
+			splitarr[#splitarr+1] = msg:sub(u,length)
+			u = length+1
+		end
+	end
+	return splitarr
+end
+
+grn = 204
+red = 167
+lghtgrn = 205
+
+
+
+function COLOR(str)
+	local out
+	strnum = tonumber(str)
+	if strnum >= 256 and strnum < 509 then
+		strnum = strnum - 254
+		out = string.char(0x1E,strnum)
+	elseif strnum >0 then
+		out = string.char(0x1F,strnum)
+	else
+		write('You have an invalid color '..str)
+		out = string.char(0x1F,1)
+	end
+	return out
+end
